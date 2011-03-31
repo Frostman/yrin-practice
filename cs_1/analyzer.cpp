@@ -34,7 +34,7 @@ void discover_pe_file(std::string path, pe_file_t * pe, int code_sections) {
 				if(pe->sec_table_header->SizeOfRawData != 0) {					
 					char * start = (char *)((DWORD)pe->dos_header + pe->sec_table_header->PointerToRawData);
 					int size = pe->sec_table_header->SizeOfRawData;
-					
+					//code_section
 				}
 		}
 	}
