@@ -11,7 +11,8 @@ int getopts(opts_t * opts, int argc, char ** argv) {
 	if(1 == argc) {
 		// there are no args, use default config
 		opts->mode = HASH;
-		opts->path = "C:\\Windows";
+//		opts->path = "C:\\Program Files (x86)";		
+		opts->path = "C:\\Windows";		
 	} else {
 		bool mode_specified = false;
 		for(int i = 1; i < argc; i++) {

@@ -7,7 +7,7 @@ bool isExeFile(std::string path);
 
 bool isDir(int file_attrs);
 
-void walk_path(std::string path, void (*file_handler)(std::string)) {
+void walk_path(std::string path, void (*file_handler)(std::string, void *), void * prefs) {
 	// folder elements iterator
 	WIN32_FIND_DATA find_data;
 	HANDLE find_handler;	
@@ -22,12 +22,13 @@ void walk_path(std::string path, void (*file_handler)(std::string)) {
 			}
 			directory = path + "/" + file_name;
 			
-			if (!isDir(file_attrs) && isExeFile(directory)) {
-					file_handler(directory);							
+			if (!isDir(file_attrs)) {
+				if(isExeFile(directory)) {
+					file_handler(directory, prefs);							
+				}
 			} else {				
-				walk_path(directory, file_handler);				
-			}
-			// итеририруемся по результатам поиска (find_data)
+				walk_path(directory, file_handler, prefs);				
+			}			
 		} while(FindNextFile(find_handler, &find_data));
 		FindClose(find_handler);
 	}
@@ -68,6 +69,5 @@ bool isExeFile(std::string path) {
 }
 
 bool isDir(int file_attrs) {
-	// if mask lt 31 it's dir
 	return file_attrs < 31;
 }

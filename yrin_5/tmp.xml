@@ -1,0 +1,17 @@
+<dir>
+    <entries>
+        <entry>
+            <path>path</path>
+
+            <entries>
+                ...
+            </entries>
+        </entry>
+
+        <entry>
+            <path>path</path>
+
+            <hash></hash>
+        </entry>
+    </entries>
+</dir>
