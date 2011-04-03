@@ -3,6 +3,6 @@
 
 #include <string>
 
-void walk_path(std::string, void (*)(std::string, void *), void *);
+void walk_path(std::string, void (*)(std::string, prefs_t *), prefs_t *);
 
 #endif /* FILE_WALKER_H */

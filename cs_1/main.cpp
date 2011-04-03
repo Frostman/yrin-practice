@@ -11,6 +11,7 @@
 #include "file_walker.h"
 #include "md5.h"
 #include "analyzer.h"
+#include "conf.h"
 
 char * current_time();
 
@@ -22,15 +23,28 @@ int main(int argc, char * argv[]) {
 		#endif
 	} else {
 		printf("Some errors in parsing command line arguments\n");
-	}	
+		return -1;
+	}
+	prefs_t prefs;
+	prefs.buf = (char *) malloc(20000 * sizeof(char));
+	prefs.buf_size = PREFS_BUFFER_SIZE;
+
+	prefs.first_cs_size = AT_EXE_FIRST_CS_SIZE;
+	prefs.hash = AT_EXE_HASH;
+	prefs.skip_bytes = AT_EXE_SKIP_BYTES;
+	prefs.sign_size = AT_EXE_SIGNATURE_LENGTH;
+	int sign[PREFS_SIGN_BUF_SIZE] = AT_EXE_SIGNATURE;
+	prefs.sign = &sign[0];
 	
 	printf("%s: Starting files processing\n", current_time());
-
-	walk_path(opts.path, hashcode_checker, NULL);
+	
+	if(opts.mode == HASH) {
+		walk_path(opts.path, hashcode_checker, &prefs);
+	} else if(opts.mode == SIGNATURE) {
+		walk_path(opts.path, signature_checker, &prefs);
+	}	
 
 	printf("%s: All files processed\n", current_time());
-
-// string	md5(string)
 
 	_getch();
 }
@@ -48,7 +62,7 @@ char * current_time() {
 	char buf[1024];
 	SYSTEMTIME st;
     GetSystemTime(&st);
-	sprintf(buf, "%2d:%2d:%2d %4d", st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
+	sprintf_s(buf, "%2d:%2d:%2d %4d", st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
 
 	return buf;
 }

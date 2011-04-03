@@ -1,13 +1,15 @@
 #include <windows.h>
 #include <string>
 
+#include "types.h"
+
 std::string getFileName(WIN32_FIND_DATA find_data);
 
 bool isExeFile(std::string path);
 
 bool isDir(int file_attrs);
 
-void walk_path(std::string path, void (*file_handler)(std::string, void *), void * prefs) {
+void walk_path(std::string path, void (*file_handler)(std::string, prefs_t *), prefs_t * prefs) {
 	// folder elements iterator
 	WIN32_FIND_DATA find_data;
 	HANDLE find_handler;	

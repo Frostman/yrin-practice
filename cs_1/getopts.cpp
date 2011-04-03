@@ -2,6 +2,7 @@
 #include <string>
 
 #include "types.h"
+#include "conf.h"
 
 void print_help();
 
@@ -10,9 +11,8 @@ int getopts(opts_t * opts, int argc, char ** argv) {
 
 	if(1 == argc) {
 		// there are no args, use default config
-		opts->mode = HASH;
-//		opts->path = "C:\\Program Files (x86)";		
-		opts->path = "C:\\Windows";		
+		opts->mode = HASH;		
+		opts->path = DEFAULT_ROOT_FOLDER;
 	} else {
 		bool mode_specified = false;
 		for(int i = 1; i < argc; i++) {
@@ -41,7 +41,8 @@ int getopts(opts_t * opts, int argc, char ** argv) {
 				mode_specified = true;
 				opts->mode = SIGNATURE;
 			} else if(strcmp(argv[i], "-p") == 0 && i + 1 < argc) {
-				printf("PATH!!!!");
+				opts->path = argv[i+1];
+				i++;
 			} else {
 				printf("Error: Unknown flag %s\n", argv[i]);
 				print_help();

@@ -8,7 +8,7 @@
 
 #define PROC_NAME "cs_3.exe"
 #define PROC_COPY_NAME "cs_3_copy.exe"
-#define WATCH_INTERVAL 15000
+#define WATCH_INTERVAL 5000
 
 #include "file_util.h"
 #include "process_util.h"
