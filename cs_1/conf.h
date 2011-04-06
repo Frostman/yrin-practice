@@ -2,7 +2,7 @@
 #define CONF_H
 
 //#define DEFAULT_ROOT_FOLDER "C:\\Windows"; //15-20 min (17,7 GB in 118533 files in 23910 folders)		
-#define DEFAULT_ROOT_FOLDER "C:\\Windows\\System32"; //1-2 min (2,74 GB in 13506 files in 1096 folders)
+#define DEFAULT_ROOT_FOLDER "C:\\Windows\\System32"; //2-3 min (2,74 GB in 13506 files in 1096 folders)
 
 #define PREFS_BUFFER_SIZE 20000
 #define PREFS_SIGN_BUF_SIZE AT_EXE_SIGNATURE_LENGTH

@@ -22,7 +22,7 @@ int main(int argc, char * argv[]) {
 			printf("Command line arguments parsed successfully\n");
 		#endif
 	} else {
-		printf("Some errors in parsing command line arguments\n");
+		//printf("Some errors in parsing command line arguments\n");
 		return -1;
 	}
 	prefs_t prefs;

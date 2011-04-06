@@ -11,8 +11,8 @@ int getopts(opts_t * opts, int argc, char ** argv) {
 
 	if(1 == argc) {
 		// there are no args, use default config
-		opts->mode = HASH;		
-		opts->path = DEFAULT_ROOT_FOLDER;
+		//opts->mode = HASH;		
+		//opts->path = DEFAULT_ROOT_FOLDER;		
 	} else {
 		bool mode_specified = false;
 		for(int i = 1; i < argc; i++) {
@@ -51,15 +51,20 @@ int getopts(opts_t * opts, int argc, char ** argv) {
 		} /* argv iter */
 	} /* if argc != 1 */
 	
+	bool show_help = false;
 	// check configuration
 	if(opts->mode == NONE) {
 		printf("Mode isn't specified\n");
-		print_help();
-		return -1;
+		show_help = true;
 	}
 
 	if(opts->path.length() == 0) {
 		printf("Path isn't specified\n");
+		show_help = true;
+	}
+
+	if(show_help) {
+		printf("\n");
 		print_help();
 		return -1;
 	}
