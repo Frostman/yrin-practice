@@ -169,6 +169,10 @@
 				RelativePath="..\cs_1\md5.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\sign_util.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -177,6 +181,14 @@
 			>
 			<File
 				RelativePath="..\cs_1\md5.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sign_util.h"
+				>
+			</File>
+			<File
+				RelativePath=".\types.h"
 				>
 			</File>
 		</Filter>
