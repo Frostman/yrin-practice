@@ -1,2 +1,7 @@
 out
 Debug
+Release
+*.obj
+*.exe
+*.ncb
+*.user
